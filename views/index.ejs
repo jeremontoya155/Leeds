@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Principal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bienvenido a la Gestión de Leads</h1>
+
+  <% if (!user) { %>
+    <p>Por favor, inicia sesión para acceder a los leads.</p>
+    <a href="/login"><button>Iniciar Sesión</button></a>
+  <% } else { %>
+    <p>¡Hola, <%= user.rol %>!</p>
+    <a href="/leads/<%= user.id %>"><button>Ver Leads</button></a>
+    <a href="/logout"><button>Cerrar Sesión</button></a>
+  <% } %>
+</body>
+</html>

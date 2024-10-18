@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gráfico de Leads</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.2/chart.min.js"></script>
+</head>
+<body class="bg-gray-100 p-8">
+  <div class="max-w-7xl mx-auto bg-white shadow-md p-6 rounded-lg">
+    <h1 class="text-3xl font-bold text-gray-700 mb-4">Leads por Estado</h1>
+
+    <canvas id="leadsChart" width="400" height="200"></canvas>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const dataEstados = JSON.parse('<%- JSON.stringify(data.map(row => row.estado)) %>');
+      const dataTotales = JSON.parse('<%- JSON.stringify(data.map(row => row.total)) %>');
+      
+      const ctx = document.getElementById('leadsChart').getContext('2d');
+      const chart = new Chart(ctx, {
+        type: 'bar', 
+        data: {
+          labels: dataEstados,
+          datasets: [{
+            label: 'Leads por Estado',
+            data: dataTotales,
+            backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(255, 206, 86, 0.2)'],
+            borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)', 'rgba(255, 206, 86, 1)'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
