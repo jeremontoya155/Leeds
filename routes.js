@@ -33,7 +33,7 @@ module.exports = (pool) => {
           id: user.id,
           rol: user.rol
         };
-        res.redirect(`/leads/${user.id}`);
+        res.redirect(`/`);
       } else {
         res.send('Email o contraseña incorrectos');
       }
