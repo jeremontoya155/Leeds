@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f6f9fc 0%, #ecf3f8 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2d3748;
+  }
+
+  .container {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .container:hover {
+    transform: translateY(-5px);
+  }
+  h1 {
+    color: #2d3748;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+    background-clip: text;          /* Versión estándar */
+    -webkit-background-clip: text;  /* Versión para WebKit (Safari, Chrome antiguos) */
+    -webkit-text-fill-color: transparent;
+  }
+  .welcome-text {
+    font-size: 1.1rem;
+    color: #718096;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .user-role {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #e2e8f0;
+    color: #4a5568;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+  }
+
+  .button-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .button {
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px;
+  }
+
+  .button-primary {
+    background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(66, 153, 225, 0.2);
+  }
+
+  .button-primary:hover {
+    transform: translateY(-1.5px);
+    box-shadow: 0 6px 16px rgba(66, 153, 225, 0.3);
+  }
+
+  .button-secondary {
+    background: #fff;
+    color: #4a5568;
+    border: 2px solid #e2e8f0;
+  }
+
+  .button-secondary:hover {
+    background: #f7fafc;
+    transform: translateY(-1.5px);
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    fill: currentColor;
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 2rem;
+      width: 95%;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+    }
+
+    .button {
+      width: 100%;
+    }
+  }

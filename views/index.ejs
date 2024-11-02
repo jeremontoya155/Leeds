@@ -3,31 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Principal</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 50px;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      margin: 20px;
-      cursor: pointer;
-    }
-  </style>
+  <title>Gestión de Leads</title>
+  <link rel="stylesheet" href="/css/styles.css"> 
 </head>
 <body>
-  <h1>Bienvenido a la Gestión de Leads</h1>
+  <div class="container">
+    <h1>Gestión de Leads</h1>
 
-  <% if (!user) { %>
-    <p>Por favor, inicia sesión para acceder a los leads.</p>
-    <a href="/login"><button>Iniciar Sesión</button></a>
-  <% } else { %>
-    <p>¡Hola, <%= user.rol %>!</p>
-    <a href="/leads/<%= user.id %>"><button>Ver Leads</button></a>
-    <a href="/logout"><button>Cerrar Sesión</button></a>
-  <% } %>
+    <% if (!user) { %>
+      <p class="welcome-text">Accede a tu cuenta para gestionar tus leads de manera eficiente y organizada.</p>
+      <div class="button-container">
+        <a href="/login" class="button button-primary">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round"/>
+          </svg>
+          Iniciar Sesión
+        </a>
+      </div>
+    <% } else { %>
+      <span class="user-role"><%= user.rol %></span>
+      <p class="welcome-text">¡Bienvenido de nuevo! Tu panel de control está listo.</p>
+      <div class="button-container">
+        <a href="/leads/<%= user.id %>" class="button button-primary">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Ver Leads
+        </a>
+        <a href="/logout" class="button button-secondary">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9M16 17L21 12M21 12L16 7M21 12H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Cerrar Sesión
+        </a>
+      </div>
+    <% } %>
+  </div>
 </body>
 </html>

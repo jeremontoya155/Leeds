@@ -6,6 +6,7 @@ const { Pool } = require('pg');
 const routes = require('./routes');
 const app = express();
 
+app.use(express.static('public'));
 // Configurar la conexión a PostgreSQL
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,

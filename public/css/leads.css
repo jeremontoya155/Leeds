@@ -1,0 +1,172 @@
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f3f4f6;
+    padding: 2rem;
+    line-height: 1.5;
+  }
+
+  /* Contenedor principal */
+  .container {
+    max-width: 80rem;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+  }
+
+  /* Encabezados */
+  h1 {
+    font-size: 1.875rem;
+    font-weight: bold;
+    color: #374151;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 1rem;
+  }
+
+  /* Formulario */
+  form {
+    margin-bottom: 2rem;
+  }
+
+  .form-grid {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .form-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  input[type="text"],
+  input[type="email"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  }
+
+  /* Botones */
+  .button {
+    background-color: #3b82f6;
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .button:hover {
+    background-color: #2563eb;
+  }
+
+  .button-green {
+    background-color: #10b981;
+  }
+
+  .button-green:hover {
+    background-color: #059669;
+  }
+
+  /* Lista de leads */
+  .leads-list {
+    list-style: none;
+  }
+
+  .lead-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .lead-item:last-child {
+    border-bottom: none;
+  }
+
+  .lead-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .lead-content {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .lead-info {
+    flex-grow: 1;
+  }
+
+  .lead-name {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #111827;
+  }
+
+  .lead-details {
+    color: #6b7280;
+    margin-top: 0.25rem;
+  }
+
+  .lead-note {
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-style: italic;
+    margin-top: 0.25rem;
+  }
+
+  .lead-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 200px;
+  }
+
+  /* Select2 personalizado */
+  .select-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .select-container select {
+    width: 100%;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+  }
