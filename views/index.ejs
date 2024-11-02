@@ -27,6 +27,10 @@
     <% } else { %>
       <span class="user-role"><%= user.rol %></span>
       <p class="welcome-text">¡Bienvenido de nuevo! Tu panel de control está listo.</p>
+      <div class="actions">
+        <a href="/leads/download" class="button button-primary">Descargar Leads en Excel</a>
+      </div>
+      
       <div class="button-container">
         <a href="/leads/<%= user.id %>" class="button button-primary">
           <svg class="icon" viewBox="0 0 24 24">

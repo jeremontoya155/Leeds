@@ -58,6 +58,15 @@ module.exports = (pool) => {
     }
   });
 
+  router.get('/dashboard', async (req, res) => {
+    const { rows } = await pool.query(`
+      SELECT estado, COUNT(*) AS total 
+      FROM leads 
+      GROUP BY estado
+    `);
+    res.render('dashboard', { data: rows });
+  });
+  
   // Ruta para crear un nuevo lead
   router.post('/leads', isAuthenticated, async (req, res) => {
     const { nombre, email, telefono, estado, id_usuario, asignar_a } = req.body;
@@ -129,3 +138,42 @@ router.post('/leads/update/:id', isAuthenticated, async (req, res) => {
 
   return router;
 };
+
+
+
+// Ruta para mostrar todos los leads (solo para admin)
+router.get('/leads', async (req, res) => {
+  const { rows } = await pool.query('SELECT * FROM leads');
+  res.render('leads', { leads: rows, user: req.session.user });
+});
+
+// Ruta para actualizar el estado de un lead
+router.post('/leads/update/:id', async (req, res) => {
+  const { id } = req.params;
+  const { nuevo_estado, nota } = req.body;
+  await pool.query('UPDATE leads SET estado = $1, nota = $2 WHERE id = $3', [nuevo_estado, nota, id]);
+  res.redirect('/leads');
+});
+
+// Ruta para descargar los leads en formato Excel
+router.get('/leads/download', async (req, res) => {
+  const { rows } = await pool.query('SELECT * FROM leads');
+  
+  const workbook = new ExcelJS.Workbook();
+  const worksheet = workbook.addWorksheet('Leads');
+  
+  worksheet.columns = [
+    { header: 'Nombre', key: 'nombre', width: 20 },
+    { header: 'Email', key: 'email', width: 25 },
+    { header: 'Teléfono', key: 'telefono', width: 15 },
+    { header: 'Estado', key: 'estado', width: 15 },
+    { header: 'Nota', key: 'nota', width: 30 },
+  ];
+
+  worksheet.addRows(rows);
+  
+  res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  res.setHeader('Content-Disposition', 'attachment; filename=leads.xlsx');
+  
+  workbook.xlsx.write(res).then(() => res.end());
+});
